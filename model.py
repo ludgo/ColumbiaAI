@@ -21,13 +21,13 @@ class Board(object):
 
 	def left(self):
 		pos = self.blank - 1
-		if pos % 3 != 2:
+		if pos % 3 != 2 and pos in range(9):
 			return Board( swap(self.seq, pos, self.blank) )
 		return None
 
 	def right(self):
 		pos = self.blank + 1
-		if pos % 3 != 0:
+		if pos % 3 != 0 and pos in range(9):
 			return Board( swap(self.seq, pos, self.blank) )
 		return None
 

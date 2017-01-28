@@ -33,8 +33,9 @@ class Board(object):
 
 class State(object):
 
-	def __init__(self, board, parent=None, move=None):
+	def __init__(self, board, depth, parent=None, move=None):
 		self.board = board
+		self.depth = depth
 		self.parent = parent
 		self.move = move
 		self.udlr = [None, None, None, None]
@@ -43,18 +44,18 @@ class State(object):
 		if self.move != "Down":
 			b = self.board.up()
 			if b:
-				self.udlr[0] = State(b, self, "Up")
+				self.udlr[0] = State(b, self.depth + 1, self, "Up")
 		if self.move != "Up":
 			b = self.board.down()
 			if b:
-				self.udlr[1] = State(b, self, "Down")
+				self.udlr[1] = State(b, self.depth + 1, self, "Down")
 		if self.move != "Right":
 			b = self.board.left()
 			if b:
-				self.udlr[2] = State(b, self, "Left")
+				self.udlr[2] = State(b, self.depth + 1, self, "Left")
 		if self.move != "Left":
 			b = self.board.right()
 			if b:
-				self.udlr[3] = State(b, self, "Right")
+				self.udlr[3] = State(b, self.depth + 1, self, "Right")
 
 

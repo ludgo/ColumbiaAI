@@ -3,32 +3,34 @@ from util import swap
 
 class Board(object):
 
-	def __init__(self, board):
+	def __init__(self, board, n):
 		self.seq = board
-		self.blank = string.index(board, '0')
+		self.blank = board.index('0')
+#		self.blank = string.index(board, '0')
+		self.n = n
 
 	def up(self):
 		pos = self.blank - 3
 		if pos in range(9):
-			return Board( swap(self.seq, pos, self.blank) )
+			return Board( swap(self.seq, pos, self.blank), self.n )
 		return None
 
 	def down(self):
 		pos = self.blank + 3
 		if pos in range(9):
-			return Board( swap(self.seq, pos, self.blank) )
+			return Board( swap(self.seq, pos, self.blank), self.n )
 		return None
 
 	def left(self):
 		pos = self.blank - 1
 		if pos % 3 != 2 and pos in range(9):
-			return Board( swap(self.seq, pos, self.blank) )
+			return Board( swap(self.seq, pos, self.blank), self.n )
 		return None
 
 	def right(self):
 		pos = self.blank + 1
 		if pos % 3 != 0 and pos in range(9):
-			return Board( swap(self.seq, pos, self.blank) )
+			return Board( swap(self.seq, pos, self.blank), self.n )
 		return None
 
 class State(object):

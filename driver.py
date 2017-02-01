@@ -99,7 +99,7 @@ root = State( Board(board, N), 0 )
 
 bottom = None
 goal = []
-for ch in range(9):
+for ch in range(N**2):
 	goal.append(str(ch))
 
 if method == 'bfs':
